@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'base',
     'products',
     'orders',
 ]
@@ -124,6 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+print(f'{STATIC_ROOT=}')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
@@ -132,3 +134,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
+
+import django_heroku
+
+# Configure app for Heroku deployment
+django_heroku.settings(locals())
