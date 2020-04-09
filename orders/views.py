@@ -11,7 +11,6 @@ class OrderAPIView(GenericAPIView):
     def post(self, request):
 
         try:
-            print(request.data)
             products = []
             total_price = 0
             compact_products = request.data.pop('compact_products')
@@ -34,7 +33,6 @@ class OrderAPIView(GenericAPIView):
 
             return Response({'success':True}, 200)
         except Exception as exc:
-            print(exc)
             return Response({'error':True, 'message': str(exc)}, 400)
 
         
