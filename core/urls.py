@@ -27,4 +27,4 @@ urlpatterns = [
     path('success/', include('base.urls')),
     path('failed/', include('base.urls')),
     path('', include('base.urls')),
-] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
