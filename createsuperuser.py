@@ -10,8 +10,8 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 try:
-    User.objects.create_superuser(os.environ('ADMIN_NAME'), os.environ('ADMIN_EMAIL'), os.environ('ADMIN_PASSWORD'))
+    User.objects.create_superuser(os.getenv('ADMIN_NAME'), os.getenv('ADMIN_EMAIL'), os.getenv('ADMIN_PASSWORD'))
 except Exception as exc:
     print(exc)
 else:
-    print(os.environ('ADMIN_NAME'), os.environ('ADMIN_EMAIL'), os.environ('ADMIN_PASSWORD'))
+    print(os.getenv('ADMIN_NAME'), os.getenv('ADMIN_EMAIL'), os.getenv('ADMIN_PASSWORD'))
