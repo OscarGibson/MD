@@ -1,12 +1,18 @@
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from .models import OrderProduct, Order
 from .serializers import OrderSerialzer
+from .helpers import send_message
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class OrderAPIView(GenericAPIView):
 
     serializer_class = OrderSerialzer
+    permission_classes = [AllowAny]
 
     def post(self, request):
 
@@ -30,6 +36,8 @@ class OrderAPIView(GenericAPIView):
             )
             order.save()
             order.products.set(products)
+
+            send_message(order)
 
             return Response({'success':True}, 200)
         except Exception as exc:

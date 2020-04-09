@@ -49,7 +49,6 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -79,23 +78,23 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv("DB_NAME"),
-        'USER' : os.getenv("DB_USER"),
-        'PASSWORD' : os.getenv("DB_PASSWORD"),
-        'HOST' : os.getenv("DB_HOST"),
-        'PORT' : os.getenv("DB_PORT"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.getenv("DB_NAME"),
+#         'USER' : os.getenv("DB_USER"),
+#         'PASSWORD' : os.getenv("DB_PASSWORD"),
+#         'HOST' : os.getenv("DB_HOST"),
+#         'PORT' : os.getenv("DB_PORT"),
+#     }
+# }
 
 
 # Password validation
@@ -143,6 +142,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
+    'http://localhost:8000',
 ]
 
 import django_heroku
