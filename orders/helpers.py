@@ -1,9 +1,9 @@
 import os
 import requests
+# https://api.telegram.org/bot<yourtoken>/getUpdates
 
-
-TELEGRAM_BOT_TOKEN = '1223409180:AAHBh4S06ALAjsKJbHou9I2W92YIhNi4CNg'
-CHAT_ID = '761213047'
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+CHAT_ID = os.getenv('CHAT_ID')
 TEMPLATE = 'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&parse_mode=Markdown&text={message}'
 MESSAGE_TEMPLATE = '''
 Ім\'я:{name}
