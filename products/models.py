@@ -13,7 +13,11 @@ class Product(models.Model):
     weight = models.IntegerField()
     weight_points = models.CharField(max_length=8, choices=POINTS)
     available = models.BooleanField(default=True)
-    image = models.ImageField(upload_to='uploads/products')
+    image = models.ImageField(
+        upload_to='uploads/products',
+        blank=True,
+        null=True
+    )
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
 
     def __str__(self):

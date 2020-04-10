@@ -2,7 +2,7 @@ from django.db import models
 
 
 REGIONS = (
-    ('lviv', 'Львів'),
+    ('lviv', 'Львів та Брюховичі'),
     ('lviv region', 'Околиці Львова'),
     ('by-client', 'Самовивіз')
 )
