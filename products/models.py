@@ -15,7 +15,7 @@ class Product(models.Model):
     weight_points = models.CharField(max_length=8, choices=POINTS)
     available = models.BooleanField(default=True)
     image = CloudinaryField(
-        upload_to='uploads/products',
+        'uploads/products',
         blank=True,
         null=True
     )
