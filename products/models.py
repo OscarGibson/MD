@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary import CloudinaryField
 
 
 POINTS = (
@@ -13,7 +14,7 @@ class Product(models.Model):
     weight = models.IntegerField()
     weight_points = models.CharField(max_length=8, choices=POINTS)
     available = models.BooleanField(default=True)
-    image = models.ImageField(
+    image = CloudinaryField(
         upload_to='uploads/products',
         blank=True,
         null=True
