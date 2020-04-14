@@ -20,16 +20,28 @@ class Product(models.Model):
         null=True
     )
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    my_ordering = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     def __str__(self):
-        return self.name
+        return f'{self.name} - {self.category.name}'
+
+    class Meta:
+        verbose_name = "Продукт"
+        verbose_name_plural = "Продукти"
+        ordering = ['my_ordering']
 
 
 class Category(models.Model):
     name = models.CharField(max_length=64)
+    my_ordering = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "Категорія"
+        verbose_name_plural = "Категорії"
+        ordering = ['my_ordering']
 
     @property
     def products(self):
