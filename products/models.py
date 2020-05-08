@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from cloudinary.models import CloudinaryField
 
@@ -15,7 +16,7 @@ class Product(models.Model):
     weight_points = models.CharField(max_length=8, choices=POINTS)
     available = models.BooleanField(default=True)
     image = CloudinaryField(
-        'uploads/products',
+        f'{settings.UPLOADS_PATH}/products',
         blank=True,
         null=True
     )
